@@ -11,7 +11,7 @@ def main():
 
     expenses = df[df["amount"] < 0]
 
-    total_expenses = expenses["amount"].sum()
+    total_expenses = expenses["amount"].abs().sum()
 
     spending_by_category = (
         expenses
@@ -27,14 +27,15 @@ def main():
     print("\nStatement Summary")
     print("\nIncome: $2,200")
 
-    print("\fExpenses:")
+    print("\nExpenses:")
     print(f"${total_expenses:.2f}")
 
-    print(f"\nTop spending category:") 
-    print("\f{top_category} - ${top_amount:.2f}")
+    print("\nTop Spending Category:") 
+    print(f"{top_category}: ${top_amount:.2f}")
 
     print("\nCategory Breakdown:")
-    print(spending_by_category)
+    for category, amount in spending_by_category.items():
+        print(f"{category}: ${amount:.2f}")
 
 if __name__ == "__main__":
     main()
