@@ -25,7 +25,8 @@ def main():
     top_amount = spending_by_category.iloc[0]
 
     print("\nStatement Summary")
-    print("\nIncome: $2,200")
+    print("\nIncome:") 
+    print("$2,200.00")
 
     print("\nExpenses:")
     print(f"${total_expenses:.2f}")
