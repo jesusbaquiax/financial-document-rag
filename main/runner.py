@@ -1,9 +1,15 @@
 from backend.parsers.csv_parser import parse_csv
 from backend.services.summary_service import generate_statement_summary
+from backend.database.transaction_repository import insert_transactions
 
 
 def main():
-    df = parse_csv("sample_data/sample_data.csv")
+
+    file_path = "sample_data/sample_data.csv"
+    
+    df = parse_csv(file_path)
+
+    insert_transactions(df, source_file = file_path)
 
     summary = generate_statement_summary(df)
 
